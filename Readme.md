@@ -1,7 +1,7 @@
 # Проект «Киноман»
 
 * Студент: [Gulmira Abdullayeva](https://up.htmlacademy.ru/ecmascript/15/user/1685769).
-* Наставник:[Дмитрий Гуляев](https://htmlacademy.ru/profile/dima/87930).
+* Наставник:[Дмитрий Гуляев](https://htmlacademy.ru/profile/dima).
 
 ---
 
