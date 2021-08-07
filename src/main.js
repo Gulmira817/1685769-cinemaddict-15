@@ -1,14 +1,14 @@
 import {
-  menuTemplate,
-  filterTemplate,
-  profileTemplate,
-  showMoreButtonTemplate,
-  filmDetailsTemplate,
-  filmCard,
-  topRatingTemplate,
-  topCommentsFilms,
-  footerStatistics,
-  films
+  createMenu,
+  createFilter,
+  createProfile,
+  showMoreButton,
+  createFilmDetails,
+  createCard,
+  createTopRating,
+  createTopCommentsFilms,
+  creaetFooterStatistics,
+  createFilmsList
 } from './index.js';
 
 import {
@@ -24,20 +24,21 @@ const render = (container, template, place) => {
 
 };
 
-render(HEADER, profileTemplate(), 'beforeend');
-render(MAIN_ELEMENT, menuTemplate(), 'afterbegin');
-render(MAIN_ELEMENT, filterTemplate(), 'beforeend');
-render(MAIN_ELEMENT, films(), 'beforeend');
+render(HEADER, createProfile(), 'beforeend');
+render(MAIN_ELEMENT, createMenu(), 'afterbegin');
+render(MAIN_ELEMENT, createFilter(), 'beforeend');
+render(MAIN_ELEMENT, createFilmsList(), 'beforeend');
 const FILMS_LIST_CONTAINER = BODY.querySelector('.films-list__container');
 for (let i = 0; i < 5; i++) {
-  render(FILMS_LIST_CONTAINER, filmCard(), 'beforeend');
+  render(FILMS_LIST_CONTAINER, createCard(), 'beforeend');
 }
+const FILMS_ELEMENT = BODY.querySelector('.films');
 const FILM_LIST_ELEMENT = BODY.querySelector('.films-list');
-render(FILM_LIST_ELEMENT, showMoreButtonTemplate(), 'beforeend');
+render(FILM_LIST_ELEMENT, showMoreButton(), 'beforeend');
 
-render(MAIN_ELEMENT, topRatingTemplate(), 'beforeend');
-render(MAIN_ELEMENT, topCommentsFilms(), 'beforeend');
-render(FOOTER_STATISTICS, footerStatistics(), 'beforeend');
-render(BODY, filmDetailsTemplate(), 'beforeend');
+render(FILMS_ELEMENT, createTopRating(), 'beforeend');
+render(FILMS_ELEMENT, createTopCommentsFilms(), 'beforeend');
+render(FOOTER_STATISTICS, creaetFooterStatistics(), 'beforeend');
+render(BODY, createFilmDetails(), 'beforeend');
 
 

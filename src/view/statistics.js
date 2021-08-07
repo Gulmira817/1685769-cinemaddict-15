@@ -1,4 +1,4 @@
-export const stats = () => (
+export const createStatistics = () => (
   `
   <section class="statistic">
     <p class="statistic__rank">

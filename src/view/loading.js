@@ -1,4 +1,4 @@
-export const loading = () => (
+export const createLoading = () => (
   `
     <section class="films">
     <section class="films-list">
