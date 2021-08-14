@@ -1,5 +1,5 @@
 export { createMenu } from './view/menu.js';
-export { createFilter } from './view/filter.js';
+export { createSort } from './view/sort.js';
 export { createProfile } from './view/profile.js';
 export { showMoreButton } from './view/button.js';
 export { createFilmDetails } from './view/film-details.js';
