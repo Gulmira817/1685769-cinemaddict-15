@@ -148,6 +148,34 @@ function getRandomPositiveFloat(a, b, digits = 1) {
   return result.toFixed(digits);
 }
 
+//=========== render ========================
+
+const RenderPosition = {
+  AFTERBEGIN: 'afterbegin',
+  BEFOREEND: 'beforeend',
+};
+const renderElement = (container, element, place) => {
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(element);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(element);
+      break;
+  }
+
+};
+
+const createElement = (template) => {
+  const newElement = document.createElement('div');
+  newElement.innerHTML = template;
+  return newElement.firstChild;
+};
+
+
+const renderTemplate = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
+};
 
 export {
   generateNameOfPosters,
@@ -160,6 +188,10 @@ export {
   getUrlImgName,
   getAuthorComments,
   generateGenre,
-  getRandomPositiveFloat
+  getRandomPositiveFloat,
+  renderElement,
+  renderTemplate,
+  createElement,
+  RenderPosition
 
 };

@@ -43,7 +43,6 @@ export const generateData = () => {
     isWhatchList: Boolean(getRandomInteger(0, 1)),
     isHistory: Boolean(getRandomInteger(0, 1)),
     isFavorite: Boolean(getRandomInteger(0, 1)),
-    // emojiList: Array(getRandomInteger(1, 5)).fill('').map(() => `./images/emoji/${getUrlImgName()}.png`),
     emojiList: arrEmoji,
   };
 };
