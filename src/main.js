@@ -40,12 +40,12 @@ renderElement(MAIN_ELEMENT, new FilmsListView().getElement(), RenderPosition.BEF
 
 const showPopup = (popup) => {
   BODY.classList.add('hide-overflow');
-  BODY.appendChild(popup),
+  BODY.appendChild(popup);
 };
 
 const hidePopup = (popup) => {
   BODY.classList.remove('hide-overflow');
-  BODY.removeChild(popup),
+  BODY.removeChild(popup);
 };
 
 // const onEscKeyDown = (evt, popup) => {
@@ -70,8 +70,8 @@ const setFilmCardClickHandler = (card, cardElement) => {
   const closeButton = filmDetails.querySelector('.film-details__close-btn');
   document.addEventListener('keydown', (event) => {
     if (event.code === 'Escape' || event.key === 'Esc' && (event.ctrlKey || event.metaKey)) {
-      BODY.removeChild(filmDetails),
-        BODY.classList.remove('hide-overflow');
+      BODY.classList.remove('hide-overflow');
+      BODY.removeChild(filmDetails);
     }
   });
   // document.addEventListener('keydown', () => onEscKeyDown(filmDetails));
