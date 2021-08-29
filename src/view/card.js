@@ -15,11 +15,11 @@ const createCardTemplate = (data) => {
           <p class="film-card__description">${description.join('')}</p>
           <a class="film-card__comments">${comments.length} comments</a>
               <div class="film-card__controls">
-                  <button class="film-card__controls-item film-card__controls-item--add-to-watchlist
+                <button class="film-card__controls-item film-card__controls-item--add-to-watchlist
                     ${isWhatchList ? 'film-card__controls-item--active' : ''} "
                     type="button">${isWhatchList}</button>
                 <button class="film-card__controls-item  film-card__controls-item--mark-as-watched ${isHistory ? 'film-card__controls-item--active' : ''}" type="button">Mark as watched</button>
-                  <button class="film-card__controls-item  film-card__controls-item--favorite ${isFavorite ? 'film-card__controls-item--active' : ''}" type="button">Mark as favorite</button>
+                <button class="film-card__controls-item  film-card__controls-item--favorite ${isFavorite ? 'film-card__controls-item--active' : ''}" type="button">Mark as favorite</button>
               </div></article >`);
 };
 

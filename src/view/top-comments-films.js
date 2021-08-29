@@ -2,7 +2,6 @@ import { createElement } from '../utils';
 
 const createTopCommentsTemplate = (data) => {
   const { title, description, comments, poster, genre, rating } = data;
-  console.log(comments);
   return (
     `<section class="films-list films-list--extra">
   <h2 class="films-list__title">Most commented</h2>
