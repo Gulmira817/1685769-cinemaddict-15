@@ -1,4 +1,5 @@
-export const createFilmDetails = (data) => {
+import { createElement } from '../utils';
+const createFilmDetailsTemplate = (data) => {
   const { title, dueDate, description, comments, poster, genre, emojiList } = data;
 
   return (
@@ -108,3 +109,25 @@ export const createFilmDetails = (data) => {
     </section>`
   );
 };
+export default class FilmsDetails {
+  constructor(data) {
+    this._element = null;
+    this._data = data;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._data);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+    return this._element;
+  }
+}
