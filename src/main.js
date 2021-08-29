@@ -39,13 +39,13 @@ renderElement(MAIN_ELEMENT, new SortView().getElement(), RenderPosition.BEFOREEN
 renderElement(MAIN_ELEMENT, new FilmsListView().getElement(), RenderPosition.BEFOREEND);
 
 const showPopup = (popup) => {
+  BODY.classList.add('hide-overflow');
   BODY.appendChild(popup),
-    BODY.classList.add('hide-overflow');
 };
 
 const hidePopup = (popup) => {
+  BODY.classList.remove('hide-overflow');
   BODY.removeChild(popup),
-    BODY.classList.remove('hide-overflow');
 };
 
 // const onEscKeyDown = (evt, popup) => {
