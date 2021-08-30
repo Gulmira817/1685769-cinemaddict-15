@@ -8,7 +8,7 @@ import { RenderPosition } from './utils.js';
 import SiteMenuView from './view/menu.js';
 import ProfileView from './view/profile.js';
 import TopRatingContainerView from './view/top-rated-container.js';
-import TopCommentsView from './view/top-comments-films.js';
+// import TopCommentsView from './view/top-comments-films.js';
 import SortView from './view/sort.js';
 import MoreButtonView from './view/button.js';
 import CardView from './view/card.js';
