@@ -1,4 +1,4 @@
-import { createElement } from '../utils';
+import AbstractView from './abstract.js';
 
 const createTopRatingTemplate = (data) => {
   const { title, description, comments, poster, genre, rating } = data;
@@ -46,24 +46,13 @@ const createTopRatingTemplate = (data) => {
   );
 };
 
-export default class TopRating {
+export default class TopRating extends AbstractView {
   constructor(data) {
-    this._element = null;
+    super();
     this._data = data;
   }
 
   getTemplate() {
     return createTopRatingTemplate(this._data);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

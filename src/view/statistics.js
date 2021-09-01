@@ -1,4 +1,6 @@
-export const createStatistics = () => (
+import AbstractView from './abstract.js';
+
+const createStatisticsTemplate = () => (
   `<section class="statistic">
     <p class="statistic__rank">
       Your rank
@@ -46,3 +48,9 @@ export const createStatistics = () => (
 
   </section>`
 );
+
+export default class Statistics extends AbstractView {
+  getTemplate() {
+    return createStatisticsTemplate();
+  }
+}

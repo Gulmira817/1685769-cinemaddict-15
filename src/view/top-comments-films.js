@@ -1,4 +1,4 @@
-import { createElement } from '../utils';
+import AbstractView from './abstract.js';
 
 const createTopCommentsTemplate = (data) => {
   const { title, description, comments, poster, genre, rating } = data;
@@ -55,24 +55,13 @@ const createTopCommentsTemplate = (data) => {
   );
 };
 
-export default class TopComments {
+export default class TopComments extends AbstractView {
   constructor(data) {
-    this._element = null;
+    super();
     this._data = data;
   }
 
   getTemplate() {
     return createTopCommentsTemplate(this._data);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }
