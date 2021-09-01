@@ -12,7 +12,7 @@ import {
   generateNameOfPosters,
   generateGenre,
   getRandomPositiveFloat
-} from '../utils.js';
+} from '../utils/common.js';
 
 const arrEmoji = [
   './images/emoji/angry.png',

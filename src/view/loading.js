@@ -1,4 +1,6 @@
-export const createLoading = () => (
+import AbstractView from './abstract.js';
+
+const createLoadingTemplate = () => (
   `
     <section class="films">
     <section class="films-list">
@@ -7,3 +9,10 @@ export const createLoading = () => (
   </section>
   `
 );
+
+export default class Loading extends AbstractView {
+  getTemplate() {
+    return createLoadingTemplate();
+  }
+
+}
