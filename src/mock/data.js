@@ -28,9 +28,11 @@ const generateComment = () => ({
   text: generateComments(),
 });
 
+let id = 0;
 export const generateData = () => {
   const dueDate = dayjs(generateDate()).format('YYYY/MM/DD HH:m');
   return {
+    id: ++id,
     title: generateTitleOfFilms(),
     description: generateDescription(),
     dueDate,
