@@ -59,6 +59,7 @@ export const remove = (component) => {
   component.removeElement();
 };
 
+
 export const removeFromDom = (component) => {
   if (!(component instanceof Abstract)) {
     throw new Error('Can remove only components');
@@ -67,3 +68,10 @@ export const removeFromDom = (component) => {
   BODY.removeChild(component.getElement());
 
 };
+
+export const showPopup = (popup) => {
+  BODY.classList.add('hide-overflow');
+  BODY.appendChild(popup.getElement());
+
+};
+
