@@ -36,8 +36,7 @@ export const generateData = () => {
     title: generateTitleOfFilms(),
     description: generateDescription(),
     dueDate,
-    comments: Array(getRandomInteger(1, 5)).fill('').map(() => generateComment())
-    ,
+    comments: Array(getRandomInteger(1, 5)).fill('').map(() => generateComment()),
     poster: generateNameOfPosters(),
     rating: getRandomPositiveFloat(1, 10),
     genre: generateGenre(),

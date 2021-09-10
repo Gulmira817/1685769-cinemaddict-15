@@ -41,8 +41,8 @@ const createFilmDetailsTemplate = (data) => {
               <td class="film-details__cell">Erich von Stroheim, Mary Beth Hughes, Dan Duryea</td>
             </tr>
             <tr class="film-details__row">
-              <td class="film-details__term">${dueDate}</td>
-              <td class="film-details__cell">30 March 1945</td>
+              <td class="film-details__term">Release Date</td>
+              <td class="film-details__cell">${dueDate}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Runtime</td>
