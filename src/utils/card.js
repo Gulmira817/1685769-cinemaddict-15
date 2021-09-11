@@ -23,19 +23,23 @@ const sortDate = (cardA, cardB) => {
   if (weight !== null) {
     return weight;
   }
-  if (cardA.dueDate > cardB.dueDate) {
-
-    return dayjs(cardA.dueDate).diff(dayjs(cardB.dueDate));
-  } else {
+  return dayjs(cardB.dueDate).diff(dayjs(cardA.dueDate));
+};
 
 
-    return dayjs(cardB.dueDate).diff(dayjs(cardA.dueDate));
+const sortRating = (cardA, cardB) => {
+  const weight = getWeightForNullDate(cardA.rating, cardB.rating);
+
+  if (weight !== null) {
+    return weight;
   }
 
+  return dayjs(cardB.rating).diff(dayjs(cardA.rating));
 };
 
 
 export {
-  sortDate
+  sortDate,
+  sortRating
 
 };

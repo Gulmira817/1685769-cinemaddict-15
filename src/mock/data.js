@@ -3,8 +3,8 @@ import dayjs from 'dayjs';
 import {
   generateTitleOfFilms,
   generateDescription,
-  generateDate,
   getRandomColor,
+  generateDate,
   getRandomInteger,
   generateComments,
   getUrlImgName,
@@ -21,12 +21,14 @@ const arrEmoji = [
   './images/emoji/smile.png',
 ];
 
+
 const generateComment = () => ({
   author: getAuthorComments(),
   emotion: `./images/emoji/${getUrlImgName()}.png`,
   date: generateDate(),
   text: generateComments(),
 });
+
 
 let id = 0;
 export const generateData = () => {

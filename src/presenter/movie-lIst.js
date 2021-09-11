@@ -13,9 +13,8 @@ import Movie from './movie.js';
 import FilmsListView from '../view/films-list.js';
 import EmptyFilmsListView from '../view/empty-films-list.js';
 import { generateFilter } from '../mock/mock-filter.js';
-import { generateData } from '../mock/data.js';
 import { updateItem } from '../utils/common.js';
-import { sortDate } from '../utils/card.js';
+import { sortDate, sortRating } from '../utils/card.js';
 
 const BODY = document.querySelector('body');
 const FILM_LIST_ELEMENT = BODY.querySelector('.films-list');
@@ -47,7 +46,7 @@ export default class MovieList {
     // малая часть текущей функции renderBoard в main.js
     this._cards = cards.slice();
     this._renderMenu(this._cards);
-    this._renderSort();
+    // this._renderSort();
     this._renderCardList();
     this._sourcedCardList = cards.slice();
 
@@ -75,7 +74,7 @@ export default class MovieList {
         this._cards.sort(sortDate);
         break;
       case SortType.RATING:
-        // this._cards.sort(sortTaskDown);
+        this._cards.sort(sortRating);
         break;
       default:
         // 3. А когда пользователь захочет "вернуть всё, как было",
@@ -91,7 +90,6 @@ export default class MovieList {
     if (this._currentSortType === sortType) {
       return;
     }
-
     this._sortTasks(sortType);
     this._clearCardList();
     this._renderCardList();
@@ -148,7 +146,6 @@ export default class MovieList {
       if (this._cards.length > this._renderedCardCount) {
         this._renderLoadMoreButton();
       }
-
     }
   }
 
@@ -161,7 +158,8 @@ export default class MovieList {
   _renderMenu(cards) {
     const filters = generateFilter(cards);
     render(this._mainElement, new SiteMenuView(filters), RenderPosition.AFTERBEGIN);
-    render(this._mainElement, this._sortComponent, RenderPosition.BEFOREEND);
+    this._renderSort();
+    // render(this._mainElement, this._sortComponent, RenderPosition.BEFOREEND);
   }
 
 
