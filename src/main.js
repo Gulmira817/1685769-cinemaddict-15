@@ -1,25 +1,9 @@
 import {
-  HEADER,
-  MAIN_ELEMENT
+  HEADER
 } from './constants/constants.js';
-
-import SiteMenuView from './view/menu.js';
 import ProfileView from './view/profile.js';
-import TopRatingContainerView from './view/top-rated-container.js';
-// import TopCommentsView from './view/top-comments-films.js';
-import SortView from './view/sort.js';
-import LoadMoreButtonView from './view/button.js';
-import CardView from './view/card.js';
-import FilmsListView from './view/films-list.js';
-import FooterStatistics from './view/footer-statistic.js';
-import FilmsDetailsView from './view/film-details.js';
-import EmptyFilmsListView from './view/empty-films-list.js';
-
-
 import { generateData } from './mock/data.js';
-import { generateFilter } from './mock/mock-filter.js';
-
-import { render, RenderPosition, remove, removeFromDom } from './utils/render.js';
+import { render, RenderPosition } from './utils/render.js';
 import MovieList from './presenter/movie-list.js';
 
 // const BODY = document.querySelector('body');

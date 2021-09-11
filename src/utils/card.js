@@ -26,7 +26,6 @@ const sortDate = (cardA, cardB) => {
   return dayjs(cardB.dueDate).diff(dayjs(cardA.dueDate));
 };
 
-
 const sortRating = (cardA, cardB) => {
   const weight = getWeightForNullDate(cardA.rating, cardB.rating);
 
