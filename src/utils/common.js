@@ -78,12 +78,10 @@ const generateDescription = () => {
 //=======================================================================================
 
 const generateDate = () => {
-  const isDate = Boolean(getRandomInteger(0, 1));
-
-  if (!isDate) {
-    return null;
-  }
-
+  // const isDate = Boolean(getRandomInteger(0, 1));
+  // if (!isDate) {
+  //   return null;
+  // }
   const maxDaysGap = 7;
   const daysGap = getRandomInteger(-maxDaysGap, maxDaysGap);
 
@@ -96,7 +94,6 @@ const generateDate = () => {
 const getRandomColor = () => {
   const colors = ['black', 'yellow', 'blue', 'green', 'pink'];
   const randomIndex = getRandomInteger(0, colors.length - 1);
-
   return colors[randomIndex];
 };
 

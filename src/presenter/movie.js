@@ -114,12 +114,6 @@ export default class Movie {
     document.addEventListener('keydown', this._escKeyDownHandler);
   }
 
-  _renderSort() {
-    // Метод для рендеринга сортировки
-    render(this._mainElement, this._sortComponent, RenderPosition.BEFOREEND);
-
-  }
-
   destroy() {
     remove(this._cardComponent);
     remove(this._popupComponent);
