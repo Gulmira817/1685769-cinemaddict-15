@@ -15,10 +15,10 @@ import {
 } from '../utils/common.js';
 
 const arrEmoji = [
-  './images/emoji/angry.png',
-  './images/emoji/puke.png',
-  './images/emoji/sleeping.png',
-  './images/emoji/smile.png',
+  'angry',
+  'puke',
+  'sleeping',
+  'smile',
 ];
 
 
