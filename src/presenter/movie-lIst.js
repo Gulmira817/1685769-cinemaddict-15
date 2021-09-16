@@ -2,19 +2,17 @@
 import {
   MAIN_ELEMENT
 } from '../constants/constants.js';
-import { render, RenderPosition, remove, replace } from '../utils/render.js';
+import { render, RenderPosition, remove } from '../utils/render.js';
 import SiteMenuView from '../view/menu.js';
 // import ProfileView from '../view/profile.js';
 // import TopRatingContainerView from './view/top-rated-container.js';
 // import TopCommentsView from './view/top-comments-films.js';
 import SortView from '../view/sort.js';
 import MoreButtonView from '../view/button.js';
-import CardView from '../view/card.js';
-import Movie, { destroy } from './movie.js';
+import Movie from './movie.js';
 import FilmsListView from '../view/films-list.js';
 import EmptyFilmsListView from '../view/empty-films-list.js';
 import { generateFilter } from '../mock/mock-filter.js';
-import { _upCard } from './movie.js';
 import { updateItem } from '../utils/common.js';
 const BODY = document.querySelector('body');
 const FILM_LIST_ELEMENT = BODY.querySelector('.films-list');
