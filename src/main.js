@@ -1,10 +1,12 @@
 import {
   HEADER
 } from './constants/constants.js';
+
 import ProfileView from './view/profile.js';
+// import TopCommentsView from './view/top-comments-films.js';
 import { generateData } from './mock/data.js';
 import { render, RenderPosition } from './utils/render.js';
-import MovieList from './presenter/movie-list.js';
+import MovieList from './presenter/new.js';
 
 // const BODY = document.querySelector('body');
 const CARD_COUNT = 10;
