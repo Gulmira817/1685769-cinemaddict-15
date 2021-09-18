@@ -1,4 +1,3 @@
-
 import SmartView from './smart.js';
 // const BLANK_TASK = {
 //   isWhatchList: false,
@@ -10,7 +9,7 @@ import SmartView from './smart.js';
 const getEmojiUrl = (name) => `<img src='./images/emoji/${name}.png'  width="50"  height="50"/>`;
 const createFilmDetailsTemplate = (data) => {
   const { title, dueDate, description, comments, poster, genre, emojiList,
-    emoji, isWhatchList, isFavorite, isHistory, commentText } = data;
+    emoji, isWhatchList, isFavorite, isHistory, commentText, duration } = data;
 
   return (
     `<section class="film-details">
@@ -56,7 +55,7 @@ const createFilmDetailsTemplate = (data) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Runtime</td>
-              <td class="film-details__cell">1h 18m</td>
+              <td class="film-details__cell">${duration}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Country</td>
@@ -97,7 +96,7 @@ const createFilmDetailsTemplate = (data) => {
                 <p class="film-details__comment-text">${comment.text}</p>
                 <p class="film-details__comment-info">
                   <span class="film-details__comment-author">${comment.author}</span>
-                  <span class="film-details__comment-day"></span>
+                  <span class="film-details__comment-day">${comment.date}</span>
                   <button class="film-details__comment-delete">Delete</button>
                 </p>
               </div>
