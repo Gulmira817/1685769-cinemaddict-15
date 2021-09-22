@@ -1,4 +1,9 @@
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+dayjs.extend(duration);
+import isBetween from 'dayjs/plugin/isBetween';
+dayjs.extend(isBetween);
+
 
 const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
@@ -187,8 +192,24 @@ const updateItem = (items, update) => {
     ...items.slice(index + 1),
   ];
 };
+const generateRuntime = (runtime) => {
+  const hour = dayjs.duration(runtime, 'm').format('H');
+  const minute = dayjs.duration(runtime, 'm').format('mm');
+  if (runtime < 60) {
+    return `${minute}m`;
+  }
+  return `${hour}h ${minute}m`;
+};
+const getYearsFormat = (dueDate) => dayjs(dueDate).format('YYYY');
+const getTimeFormat = (dueDate) => dayjs(dueDate).format('HH:MM');
+const getDayMonthFormat = (dueDate) => dayjs(dueDate).format('D MMMM');
+const completedFimsInDateRange = (films, dateFrom, dateTo, format) => films.filter((film) =>
+  dayjs(film.userDetails.watchingDate).isBetween(dateFrom, dateTo, format, '[]'));
 
 export {
+  generateRuntime,
+  getYearsFormat,
+  getTimeFormat,
   generateNameOfPosters,
   generateDescription,
   generateTitleOfFilms,
@@ -204,6 +225,8 @@ export {
   renderTemplate,
   createElement,
   RenderPosition,
-  updateItem
+  updateItem,
+  getDayMonthFormat,
+  completedFimsInDateRange
 
 };
