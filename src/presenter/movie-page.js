@@ -4,7 +4,6 @@ import {
 } from '../constants/constants.js';
 import { render, RenderPosition, remove, replace } from '../utils/render.js';
 import { sortDate, sortRating } from '../utils/card.js';
-import SiteMenuView from '../view/menu.js';
 import CardView from '../view/card.js';
 import FootStat from '../view/footer-statistic.js';
 import SortView from '../view/sort.js';
@@ -64,7 +63,6 @@ export default class MovieList {
     //======================================================
 
     this._moviesModel.addObserver(this._handleModelEvent);
-    this._siteMenuComponent = new SiteMenuView();
     this._cardComponent = new CardView();
     this._cardsContainer = this._mainElement.querySelector('.films-list__container');
     this._filmList = this._mainElement.querySelector('.films-list');
@@ -96,7 +94,7 @@ export default class MovieList {
       render(this._mainElement, this._renderNoCards());
     } else {
       this._renderCardList();
-      this._renderFooter(films);
+      this._renderFooter(this._moviesModel.getCards());
     }
   }
 
