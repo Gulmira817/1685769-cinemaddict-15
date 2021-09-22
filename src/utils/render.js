@@ -74,4 +74,5 @@ export const showPopup = (popup) => {
   BODY.appendChild(popup.getElement());
 
 };
+export const isEscEvent = (evt) => evt.key === 'Esc' || evt.key === 'Escape';
 
