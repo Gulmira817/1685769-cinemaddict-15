@@ -1,10 +1,9 @@
-import Abstract from './abstract';
+import AbstractView from './abstract';
 
-export default class Smart extends Abstract {
+export default class Smart extends AbstractView {
   constructor() {
     super();
     this._data = {};
-    this._newComment = {};
   }
 
   updateData(update, justDataUpdating) {
@@ -27,33 +26,17 @@ export default class Smart extends Abstract {
 
   updateElement() {
     const prevElement = this.getElement();
-    const scroll = prevElement.scrollTop;
     const parent = prevElement.parentElement;
+    const scrollPosition = this.getElement().scrollTop;
+
     this.removeElement();
 
     const newElement = this.getElement();
 
     parent.replaceChild(newElement, prevElement);
-    newElement.scrollTop = scroll;
+
+    this.getElement().scrollTop = scrollPosition;
     this.restoreHandlers();
-  }
-
-  updateNewComment(update, justDataUpdating) {
-    if (!update) {
-      return;
-    }
-
-    this._newComment = Object.assign(
-      {},
-      this._newComment,
-      update,
-    );
-
-    if (justDataUpdating) {
-      return;
-    }
-
-    this.updateElement();
   }
 
   restoreHandlers() {

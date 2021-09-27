@@ -17,7 +17,7 @@ const userRunkTemplate = (films) => {
     }
   };
 
-  const watchedFilms = films.filter((film) => film.userDetails.isWhatchList === true);
+  const watchedFilms = films.filter((film) => film.userDetails.alreadyWatched === true);
 
   return `<section class="header__profile profile">
     <p class="profile__rating">${getProfileRating(watchedFilms.length)}</p>

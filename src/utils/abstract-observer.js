@@ -1,8 +1,5 @@
 export default class AbstractObserver {
   constructor() {
-    if (new.target === AbstractObserver) {
-      throw new Error('Can\'t instantiate abstract class');
-    }
     this._observers = new Set();
   }
 
@@ -18,5 +15,3 @@ export default class AbstractObserver {
     this._observers.forEach((observer) => observer(event, payload));
   }
 }
-
-
