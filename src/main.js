@@ -1,54 +1,62 @@
-import {
-  HEADER, Pages, UpdateType
-} from './constants/constants.js';
+import HeaderProfilePresenter from './presenter/header-profile';
+import StatsView from './view/stats.js';
+import FooterStatsView from './view/footer-stats';
 
-import StatisticsView from './view/statistics.js';
-
-import { render, RenderPosition, remove } from './utils/render.js';
-
-import MovieList from './presenter/movie-page.js';
-import Filter from './presenter/filter.js';
-
-import MoviesModel from './model/movies.js';
-import FilterModel from './model/filter.js';
-import CommentsModel from './model/comments.js';
 import Api from './api.js';
 
-const BODY = document.querySelector('body');
+import NavigationPresenter from './presenter/navigation';
+import CardsSectionPresenter from './presenter/cards-section';
+
+import FilmsModel from './model/films';
+import FiltersModel from './model/filters';
+import HeaderProfileModel from './model/header-profile';
+
+import { RenderPosition, render, remove } from './utils/render';
+import { UpdateType } from './const';
+
 const AUTHORIZATION = 'Basic 15fevfev15fevfev15';
 const END_POINT = 'https://15.ecmascript.pages.academy/cinemaddict';
+
+const headerElement = document.querySelector('.header');
+const mainElement = document.querySelector('.main');
+const footerStatsContainerElement = document.querySelector('.footer__statistics');
+
 const api = new Api(END_POINT, AUTHORIZATION);
-const MAIN_ELEMENT = BODY.querySelector('.main');
 
-const moviesModel = new MoviesModel();
-const commentsModel = new CommentsModel();
-const filtersModel = new FilterModel();
+const headerProfileModel = new HeaderProfileModel();
+const filmsModel = new FilmsModel();
+const filtersModel = new FiltersModel();
 
+const headerProfilePresenter = new HeaderProfilePresenter(headerElement, filmsModel, headerProfileModel);
+const cardsSectionPresenter = new CardsSectionPresenter(mainElement, filmsModel, filtersModel, api);
 
-const movieListPresenter = new MovieList(MAIN_ELEMENT, moviesModel, commentsModel, filtersModel, api, HEADER);
-const filtersPresenter = new Filter(MAIN_ELEMENT, filtersModel, moviesModel, handleMenuClick);
+let statsComponent = null;
 
-filtersPresenter.init();
-const statisticElement = new StatisticsView();
-movieListPresenter.init();
+const showCards = () => {
+  remove(statsComponent);
+  cardsSectionPresenter.destroy();
+  cardsSectionPresenter.init();
+};
 
-function handleMenuClick(filterType) {
-  if (filterType === Pages.STATISTIC) {
-    render(MAIN_ELEMENT, statisticElement, RenderPosition.BEFOREEND);
-    statisticElement.init(moviesModel);
-    movieListPresenter.hide();
-    statisticElement.setData();
-    return;
-  }
-  movieListPresenter.show();
-  remove(statisticElement);
-}
+const showStats = () => {
+  cardsSectionPresenter.destroy();
+  remove(statsComponent);
+  statsComponent = new StatsView(filmsModel.getFilms());
+  render(mainElement, statsComponent, RenderPosition.AFTEREND);
+};
 
+const navigationPresenter = new NavigationPresenter(mainElement, filtersModel, filmsModel, showCards, showStats);
+
+headerProfilePresenter.init();
+navigationPresenter.init();
+cardsSectionPresenter.init();
 
 api.getFilms()
   .then((films) => {
-    moviesModel.setCards(UpdateType.INIT, films);
+    filmsModel.setFilms(UpdateType.INIT, films);
+    render(footerStatsContainerElement, new FooterStatsView(filmsModel.getFilms().length));
   })
   .catch(() => {
-    moviesModel.setCards(UpdateType.INIT, []);
+    filmsModel.setFilms(UpdateType.INIT, []);
   });
+

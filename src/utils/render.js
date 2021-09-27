@@ -1,11 +1,13 @@
-import Abstract from '../view/abstract.js';
+import Abstract from '../view/abstract';
+
 export const RenderPosition = {
+  BEFOREBEGIN: 'beforebegin',
   AFTERBEGIN: 'afterbegin',
   BEFOREEND: 'beforeend',
+  AFTEREND: 'afterend',
 };
 
-const BODY = document.querySelector('body');
-export const render = (container, child, place) => {
+export const render = (container, child, place = RenderPosition.BEFOREEND) => {
   if (container instanceof Abstract) {
     container = container.getElement();
   }
@@ -15,21 +17,19 @@ export const render = (container, child, place) => {
   }
 
   switch (place) {
+    case RenderPosition.BEFOREBEGIN:
+      container.before(child);
+      break;
     case RenderPosition.AFTERBEGIN:
       container.prepend(child);
       break;
     case RenderPosition.BEFOREEND:
       container.append(child);
       break;
+    case RenderPosition.AFTEREND:
+      container.after(child);
+      break;
   }
-};
-
-
-export const createElement = (template) => {
-  const newElement = document.createElement('div');
-  newElement.innerHTML = template;
-
-  return newElement.firstChild;
 };
 
 export const replace = (newChild, oldChild) => {
@@ -51,6 +51,10 @@ export const replace = (newChild, oldChild) => {
 };
 
 export const remove = (component) => {
+  if (component === null) {
+    return;
+  }
+
   if (!(component instanceof Abstract)) {
     throw new Error('Can remove only components');
   }
@@ -59,20 +63,9 @@ export const remove = (component) => {
   component.removeElement();
 };
 
+export const createElement = (template) => {
+  const newElement = document.createElement('div');
+  newElement.innerHTML = template;
 
-export const removeFromDom = (component) => {
-  if (!(component instanceof Abstract)) {
-    throw new Error('Can remove only components');
-  }
-  BODY.classList.remove('hide-overflow');
-  BODY.removeChild(component.getElement());
-
+  return newElement.firstChild;
 };
-
-export const showPopup = (popup) => {
-  BODY.classList.add('hide-overflow');
-  BODY.appendChild(popup.getElement());
-
-};
-export const isEscEvent = (evt) => evt.key === 'Esc' || evt.key === 'Escape';
-

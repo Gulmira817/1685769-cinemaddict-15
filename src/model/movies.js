@@ -1,62 +1,35 @@
-import AbstractObserver from '../utils/abstract-observer.js';
+import AbstractObserver from './abstract-observer';
 
-export default class Movies extends AbstractObserver {
+export default class MoviesModel extends AbstractObserver {
   constructor() {
     super();
-    this._cards = [];
+    this._films = [];
   }
 
-  setCards(updateType, cards) {
-    this._cards = cards.slice();
-    this._notify(updateType, cards);
-
-  }
-
-  getCards() {
-    return this._cards.slice();
-  }
-
-
-  updateCard(updateType, update) {
-    const index = this._cards.findIndex((card) => card.id === update.id);
-
-    if (index === -1) {
-      throw new Error('Can\'t update unexisting task');
-    }
-
-    this._cards = [
-      ...this._cards.slice(0, index),
-      update,
-      ...this._cards.slice(index + 1),
-    ];
-
-    this._notify(updateType, update);
-  }
-
-  addCard(updateType, update) {
-    this._cards = [
-      update,
-      ...this._cards,
-    ];
-
-    this._notify(updateType, update);
-  }
-
-  deleteCard(updateType, update) {
-    const index = this._cards.findIndex((card) => card.id === update.id);
-
-    if (index === -1) {
-      throw new Error('Can\'t delete unexisting task');
-    }
-
-    this._tasks = [
-      ...this._cards.slice(0, index),
-      ...this._cards.slice(index + 1),
-    ];
-
+  setFilms(updateType, films) {
+    this._films = films.slice();
     this._notify(updateType);
   }
 
+  getFilms() {
+    return this._films;
+  }
+
+  updateFilm(updateType, update, comments, scroll) {
+    const index = this._films.findIndex((film) => film.id === update.id);
+
+    if (index === -1) {
+      throw new Error('Can\'t update unexisting film');
+    }
+
+    this._films = [
+      ...this._films.slice(0, index),
+      update,
+      ...this._films.slice(index + 1),
+    ];
+
+    this._notify(updateType, update, comments, scroll);
+  }
 
   static adaptToClient(film) {
     const adaptedFilm = Object.assign(
@@ -81,9 +54,9 @@ export default class Movies extends AbstractObserver {
           },
         },
         userDetails: {
-          isWhatchList: film['user_details']['watchlist'],
-          isHistory: film['user_details']['already_watched'],
-          isFavorite: film['user_details']['favorite'],
+          watchlist: film['user_details']['watchlist'],
+          alreadyWatched: film['user_details']['already_watched'],
+          favorite: film['user_details']['favorite'],
           watchingDate: film['user_details']['watching_date'],
         },
       });
@@ -115,9 +88,9 @@ export default class Movies extends AbstractObserver {
           },
         },
         'user_details': {
-          'watchlist': film.userDetails.isWhatchList,
-          'already_watched': film.userDetails.isHistory,
-          'favorite': film.userDetails.isFavorite,
+          'watchlist': film.userDetails.watchlist,
+          'already_watched': film.userDetails.alreadyWatched,
+          'favorite': film.userDetails.favorite,
           'watching_date': film.userDetails.watchingDate,
         },
       },

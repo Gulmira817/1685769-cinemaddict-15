@@ -1,9 +1,9 @@
-import { Pages } from '../constants/constants.js';
+import { FilterType } from '../const';
 
-const filmToFilterMap = {
-  [Pages.ALL]: (films) => films,
-  [Pages.WATCHLIST]: (films) => films.filter((film) => film.userDetails.isWhatchList),
-  [Pages.HISTORY]: (films) => films.filter((film) => film.userDetails.isHistory),
-  [Pages.FAVORITES]: (films) => films.filter((film) => film.userDetails.isFavorite),
+export const filter = {
+  [FilterType.ALL]: (films) => films.filter((film) => film),
+  [FilterType.WATCHLIST]: (films) => films.filter((film) => film.isInWatchList),
+  [FilterType.HISTORY]: (films) => films.filter((film) => film.isAlreadyWatched),
+  [FilterType.FAVORITES]: (films) => films.filter((film) => film.isFavorite),
 };
-export default filmToFilterMap;
+
